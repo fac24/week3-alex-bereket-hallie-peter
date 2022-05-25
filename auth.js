@@ -12,7 +12,7 @@ const COOKIE_OPTIONS = {
 
 function makeUser(username, email, password) {
   return bcrypt.hash(password, 10).then((hash) => {
-    return model.makeUserDB(username, email, hash);
+    return model.createUser(username, email, hash);
   });
 }
 
