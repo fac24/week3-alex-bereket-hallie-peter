@@ -1,0 +1,17 @@
+#! /bin/sh
+
+# stop script when an error occurs
+set -e
+
+# import .env file so we have the DATABASE_URL variable
+. "./.env"
+
+if [ -z "$DATABASE_URL" ]
+then
+  echo "\$DATABASE_URL is empty!"
+else
+  echo "Found \$DATABASE_URL in .env."
+  echo "Now executing database initialisation file in psql..."
+  psql $DATABASE_URL -f "./database/init.sql"
+  echo "Populated database tables"
+fi

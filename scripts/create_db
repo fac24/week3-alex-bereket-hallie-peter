@@ -1,0 +1,7 @@
+#! /bin/bash
+
+# stop script when an error occurs
+set -e
+
+# echo "DATABASE_URL=''" > .env
+# echo "Created .env containing DATABASE_URL"
