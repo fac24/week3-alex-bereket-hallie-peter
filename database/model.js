@@ -29,6 +29,7 @@ function getPosts() {
     });
 }
 
+
 function getSession(sid) {
   const SELECT_SESSION = "SELECT data FROM sessions WHERE sid=$1";
   return db.query(SELECT_SESSION, [sid]).then((result) => {
