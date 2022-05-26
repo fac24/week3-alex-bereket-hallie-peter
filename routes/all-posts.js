@@ -1,7 +1,27 @@
 const layout = require("../layout");
+const model = require("../database/model.js")
+
 
 const get = (req, res) => {
-    res.send(layout(`sign-up`, `
+    console.log(model.getPosts());
+    model.getPosts()
+        .then((result) => {
+            let postsHTML = "";
+            const posts = result;
+            console.log(posts);
+            const post = posts.map(
+                (post) => {
+                    console.log(post);
+                    (postsHTML = `
+          <div class="post-container">
+          <p>User: ${post.username}</p>
+          <p>Quote: ${post.text_content}</p>
+          </div>`)
+                })
+            return postsHTML;
+        })
+        .then((postsHTML) => {
+            res.send(layout(`sign-up`, `
     <h1>Quotes</h1>
     <form method="POST">
     <label for="post">Your quotation</label>
@@ -12,9 +32,12 @@ const get = (req, res) => {
     <button type="submit">Log Out</button>
     </section>
     <section>
-    //we will need to generate posts here//
+    ${postsHTML}
     </section>
     `));
+        })
 }
+
+// const post = 
 
 module.exports = { get };
