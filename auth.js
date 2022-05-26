@@ -1,6 +1,6 @@
 const crypto = require("crypto");
 const bcrypt = require("bcryptjs");
-//const model = require("./database/model.js");
+const model = require("./database/model.js");
 const { match } = require("assert");
 
 const COOKIE_OPTIONS = {

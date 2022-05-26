@@ -1,7 +1,9 @@
 const layout = require("../layout");
+const auth = require("../auth.js");
+const model = require("../database/model.js");
 
-const get = (req, res) => {
-  res.send(
+const get = (request, response) => {
+  response.send(
     layout(
       `sign-up`,
       `
@@ -15,8 +17,29 @@ const get = (req, res) => {
     <input id="password" type="password"></input>
     <button type="submit">Submit</button>
     </form>`
-    )
+  )
   );
 };
 
-module.exports = { get };
+const post = (request, response) => {
+  const { username, email, password } = request.body;
+  
+auth
+    .makeUser(username, email, password)
+    .then((user) => auth.userSession(user))
+    .then((sid) => {
+      response.cookie("sid", sid, auth.COOKIE_OPTIONS);
+      response.redirect("/all-posts");
+      })
+    .catch((error) => {
+      console.log(error);
+      response.send(
+      "<h1>Sorry, there was an issue signing up</h1></br><a href='/'>Home</a>"
+        );
+      });
+  };
+
+
+
+
+module.exports = { get, post };
