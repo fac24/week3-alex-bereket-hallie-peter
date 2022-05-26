@@ -18,6 +18,7 @@ server.get("/", home.get);
 server.get("/sign-up", signUp.get);
 server.get("/log-in", logIn.get);
 server.get("/all-posts", allPosts.get);
+server.post("/all-posts", bodyHandler, allPosts.post);
 
 const PORT = process.env.PORT || 3000;
 
