@@ -22,17 +22,17 @@ function userSession(user) {
   return model.makeSession(sid, { user });
 }
 
-function validateUser(email, password) {
-  return model.getUser(email).then((user) => {
-    bcrypt.compare(password, user.password).then((match) => {
-      if (!match) {
-        throw new Error("Password mismatch");
-      } else {
-        delete user.password;
-        return user;
-      }
-    });
-  });
-}
+// function validateUser(email, password) {
+//   return model.getUser(email).then((user) => {
+//     bcrypt.compare(password, user.password).then((match) => {
+//       if (!match) {
+//         throw new Error("Password mismatch");
+//       } else {
+//         delete user.password;
+//         return user;
+//       }
+//     });
+//   });
+// }
 
-module.exports = { COOKIE_OPTIONS, makeUser, userSession, validateUser };
+module.exports = { COOKIE_OPTIONS, makeUser, userSession };
