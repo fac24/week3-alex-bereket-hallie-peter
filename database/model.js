@@ -17,6 +17,18 @@ function getUser(email) {
   return db.query(SELECT_USER, [email]).then((result) => result.rows[0]);
 }
 
+function getPosts() {
+  const getPosts = `SELECT users.username, posts.text_content 
+  FROM users
+  INNER JOIN posts
+  ON users.id = posts.user_id`;
+  return db.query(getPosts)
+    .then((result) => {
+      const posts = result.rows;
+      return posts;
+    });
+}
+
 function getSession(sid) {
   const SELECT_SESSION = "SELECT data FROM sessions WHERE sid=$1";
   return db.query(SELECT_SESSION, [sid]).then((result) => {
@@ -29,4 +41,5 @@ module.exports = {
   createUser,
   getUser,
   getSession,
+  getPosts,
 };
