@@ -1,5 +1,6 @@
 const express = require("express");
 const server = express();
+
 const home = require("./routes/home.js");
 const allPosts = require("./routes/all-posts");
 const logIn = require("./routes/log-in");
