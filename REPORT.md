@@ -6,10 +6,10 @@
   
 # Team members:
 
-  - [Peter](https://github.com/PJSalter)
-  - [Hallie](https://github.com/vasystus)
-  - [Alex](https://github.com/lascellesabercrombie)
-  - [Bereket](https://github.com/Bereketmebrahtu)
+  - [Peter](https://github.com/PJSalter): Quality Assurance
+  - [Hallie](https://github.com/vasystus): DevOps
+  - [Alex](https://github.com/lascellesabercrombie): UX Lead
+  - [Bereket](https://github.com/Bereketmebrahtu): Scrum Facilitator
 
 # Project learnings:
 
