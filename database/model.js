@@ -22,13 +22,11 @@ function getPosts() {
   FROM users
   INNER JOIN posts
   ON users.id = posts.user_id`;
-  return db.query(getPosts)
-    .then((result) => {
-      const posts = result.rows;
-      return posts;
-    });
+  return db.query(getPosts).then((result) => {
+    const posts = result.rows;
+    return posts;
+  });
 }
-
 
 function getSession(sid) {
   const SELECT_SESSION = "SELECT data FROM sessions WHERE sid=$1";
