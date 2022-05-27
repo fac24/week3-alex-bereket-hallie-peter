@@ -45,6 +45,10 @@ const get = (request, response) => {
     </form>`
   )
   );
+};
+
+const post = (request, response) => {
+  const { username, email, password } = request.body;
   
 auth
     .makeUser(username, email, password)
